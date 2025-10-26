@@ -10,7 +10,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
       # (import "${home-manager}/nixos")
     ];
 
@@ -135,10 +135,21 @@
     freecad
     kdePackages.dolphin
     stow
+    tree
 
   ];
 
   virtualisation.docker.enable = true;
+ 
+
+  # the ends of rebuilds have gotten slow since this was added....
+  # Make MesloLGS Nerd Font available to fontconfig / Wayland apps
+  fonts.packages = with pkgs; [
+    nerd-fonts.meslo-lg
+  ];
+
+  # optional: good to have for Hyprland setups anyway
+  fonts.fontconfig.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

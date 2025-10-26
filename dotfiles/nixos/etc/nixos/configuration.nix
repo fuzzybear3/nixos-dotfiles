@@ -92,6 +92,7 @@
     isNormalUser = true;
     description = "steven guido";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -108,6 +109,15 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  };
+
+
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -123,19 +133,29 @@
     wget
     neovim
     anki-bin
-    htop
-    eza
     rustup
-    bottom
-    wl-clipboard
     git
-    bat
     cargo
     gcc
     freecad
     kdePackages.dolphin
     stow
+
+    #shell
+    zsh
+    fzf
+    zsh-powerlevel10k
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+
+    wl-clipboard
+
+    #basic cli tools
     tree
+    bottom
+    bat
+    htop
+    eza
 
   ];
 
